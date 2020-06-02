@@ -1,4 +1,3 @@
-/* eslint-disable vue/valid-template-root */
 <template>
   <div>
     <label>Biblioteca Fulanito</label>
