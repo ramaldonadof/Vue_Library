@@ -55,9 +55,7 @@
 <script>
 export default {
   name: "Home",
-  components: {
-    //Nothing
-  },
+  components: {},
 
   data() {
     return {
