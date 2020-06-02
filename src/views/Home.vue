@@ -12,7 +12,7 @@
     </select>
     <br />
 
-    <input v-model="name" placeholder="Busqueda" />
+    <input id="barra" v-model="name" placeholder="Busqueda" />
     <br />
 
     <table>
@@ -118,10 +118,24 @@ export default {
 
   computed: {
     filterList() {
-      return this.name === "" || this.selectedOption === null
+      /*if (this.selectedOption === null || this.selectedOption === "All") {
+        const barra = document.getElementById("barra");
+        barra.disabled = "false";
+      } else {
+        const barra = document.getElementById("barra");
+        barra.disabled = "true";
+      }*/
+
+      return (this.selectedOption === null || this.selectedOption === "All") &
+        (this.name === "")
         ? this.list
         : this.list.filter(
             item =>
+              (item.category === this.selectedOption) &
+                (item.name === this.name ||
+                  item.code === this.name ||
+                  item.description === this.name ||
+                  item.category === this.selectedOption) ||
               item.name === this.name ||
               item.code === this.name ||
               item.description === this.name ||
