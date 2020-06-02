@@ -55,9 +55,7 @@
 <script>
 export default {
   name: "Home",
-  components: {
-    //Nothing
-  },
+  components: {},
 
   data() {
     return {
@@ -118,29 +116,20 @@ export default {
 
   computed: {
     filterList() {
-      /*if (this.selectedOption === null || this.selectedOption === "All") {
-        const barra = document.getElementById("barra");
-        barra.disabled = "false";
-      } else {
-        const barra = document.getElementById("barra");
-        barra.disabled = "true";
-      }*/
-
-      return (this.selectedOption === null || this.selectedOption === "All") &
-        (this.name === "")
-        ? this.list
-        : this.list.filter(
-            item =>
-              (item.category === this.selectedOption) &
-                (item.name === this.name ||
-                  item.code === this.name ||
-                  item.description === this.name ||
-                  item.category === this.selectedOption) ||
-              item.name === this.name ||
-              item.code === this.name ||
-              item.description === this.name ||
-              item.category === this.selectedOption
-          );
+      let filtered =
+        this.selectedOption === "All" || this.selectedOption === ""
+          ? this.list
+          : this.list.filter(items => items.category === this.selectedOption);
+      filtered =
+        this.name == ""
+          ? filtered
+          : filtered.filter(
+              item =>
+                item.name === this.name ||
+                item.description === this.name ||
+                item.code === this.name
+            );
+      return filtered;
     }
   }
 };
