@@ -39,7 +39,7 @@
       </table>
     </div>
     <br />
-    <div :key="item.name" v-for="item in filterList">
+    <div :key="(item.name, item.selectedOption)" v-for="item in filterList">
       <table>
         <tr>
           <td>{{ item.code }}</td>
@@ -62,6 +62,7 @@ export default {
   data() {
     return {
       name: "",
+      selectedOption: "",
       list: [
         {
           code: "B1",
@@ -117,14 +118,14 @@ export default {
 
   computed: {
     filterList() {
-      return this.name === ""
+      return this.name === "" || this.selectedOption === null
         ? this.list
         : this.list.filter(
             item =>
-              item.category === this.name ||
               item.name === this.name ||
               item.code === this.name ||
-              item.description === this.name
+              item.description === this.name ||
+              item.category === this.selectedOption
           );
     }
   }
