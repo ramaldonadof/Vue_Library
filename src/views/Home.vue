@@ -11,32 +11,43 @@
       <option>Others</option>
     </select>
     <br />
-    <input v-model="name" placeholder="escriba su nombre" />
+
+    <input v-model="name" placeholder="Busqueda" />
     <br />
+
+    <table>
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+    </table>
+
     <div :key="item.name + '1'" v-for="item in list">
       <table>
-        <tr>
-          <td>
-            <span>{{ item.code }}</span>
-          </td>
-          <td>
-            <span>{{ item.name }}</span>
-          </td>
-          <td>
-            <span>{{ item.description }}</span>
-          </td>
-          <td>
-            <span>{{ item.category }}</span>
-          </td>
-        </tr>
+        <tfoot>
+          <tr>
+            <td>{{ item.code }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.category }}</td>
+          </tr>
+        </tfoot>
       </table>
     </div>
-
+    <br />
     <div :key="item.name" v-for="item in filterList">
-      <span>{{ item.name }}</span>
-      <br />
-      <span>{{ item.description }}</span>
-      <br />
+      <table>
+        <tr>
+          <td>{{ item.code }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.description }}</td>
+          <td>{{ item.category }}</td>
+        </tr>
+      </table>
     </div>
   </div>
 </template>
